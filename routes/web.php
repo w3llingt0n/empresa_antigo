@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('admin','EmpresaController@index')->name('index');
+
+Route::prefix('admin')->group(function (){
+    Route::get('clientes', 'EmpresaController@listar')->name('clientes');
+    Route::get('cadastrar', 'EmpresaController@cadastrar')->name('cadastrar');
+});
